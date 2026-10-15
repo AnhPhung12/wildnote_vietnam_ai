@@ -7,10 +7,10 @@ import os
 import numpy as np
 from core.vit_model import ai_extractor
 
-app = FastAPI(title="Wildnote AI Online Space")
+ai_app = FastAPI(title="Wildnote VietNam AI Online Space")
 
 # Cho phép App React Native gọi vào API
-app.add_middleware(
+ai_app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
@@ -29,11 +29,11 @@ if os.path.exists(VECTOR_DB_PATH):
 else:
     print("Could not find vectors_database.json in the data folder!")
 
-@app.get("/")
+@ai_app.get("/")
 def home():
     return {"status": "Wildnote AI Online Service is running perfectly!"}
 
-@app.post("/identify")
+@ai_app.post("/identify")
 async def identify_image(file: UploadFile = File(...)):
     if not database_vectors:
         raise HTTPException(status_code=500, detail="Vector database is not ready.")

@@ -14,4 +14,4 @@ COPY . .
 # Hugging Face Spaces yêu cầu mở cổng 7860
 EXPOSE 7860
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "ai_run:ai_app", "--host", "0.0.0.0", "--port", "7860"]
